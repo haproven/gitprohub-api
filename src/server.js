@@ -37,9 +37,9 @@ app.get("/", (req, res) => {
         links: {
             status: `https://gitprohub-api.onrender.com/`,
             github: `https://gitprohub-api.onrender.com/api/github`,
-            register: `https://gitprohub-api.onrender.com//api/register`,
-            projects: `https://gitprohub-api.onrender.com//api/projects`,
-            projectById: `https://gitprohub-api.onrender.com//api/projects/haproven`,
+            register: `https://gitprohub-api.onrender.com/api/register`,
+            projects: `https://gitprohub-api.onrender.com/api/projects`,
+            projectById: `https://gitprohub-api.onrender.com/api/projects/haproven`,
             verify: `https://gitprohub-api.onrender.com/api/verify/haproven/haproven`
         }
     });
