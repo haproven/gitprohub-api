@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Register Repository
         env:
-          API_URL: https://YOUR-GITPROHUB-API-URL/api/register
+          API_URL: https://gitprohub-api.onrender.com/api/register
           API_TOKEN: ${{ secrets.GITPROHUB_TOKEN }}
           OWNER: ${{ github.repository_owner }}
           REPOSITORY: ${{ github.event.repository.name }}
