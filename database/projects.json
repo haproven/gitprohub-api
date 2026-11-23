@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Haproven",
+    "description": "Hackathons, Projects, Events & Technology.",
+    "category": "Technology Community",
+    "status": "verified",
+    "image": "https://haproven.netlify.app/assets/img/haproven-logo.png",
+    "live": "https://haproven.netlify.app/",
+    "demo": "",
+    "documentation": "",
+    "tags": "technology-community, developer-community, open-source-projects, hackathons, technology-events, digital-tools, real-world-projects, learning-platform, collaboration, innovation, haproven, open-source",
+    "featured": "true",
+    "open_source": "true",
+    "protocol": "GitProHub",
+    "version": "1.0",
+    "id": "haproven",
+    "name": "Haproven",
+    "owner": "haproven",
+    "repository": "haproven",
+    "commit": "2043b0524bd1d053e02940fd36c71445cefbad72",
+    "url": "https://github.com/haproven/haproven",
+    "updatedAt": "2026-11-23T13:29:13.598Z"
+  }
+]

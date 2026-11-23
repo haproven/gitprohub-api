@@ -1,0 +1,159 @@
+GitProHub/
+├── gitprohub.md
+├── .github/
+│   └── workflows/
+│       └── gitprohub.yml
+├── src/
+│   ├── server.js
+│   ├── routes/
+│   └── services/
+├── database/
+│   └── projects.json
+├── public/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── package.json
+└── README.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# **GitProHub — Working Concept**
+
+GitProHub ka goal GitHub repositories ko `gitprohub.md` file ke through identify aur register karna hai.
+
+### **Kaise kaam karega?**
+
+1. Developer apne GitHub repository ke root mein `gitprohub.md` add karega.
+2. Repository mein GitHub Actions workflow (`gitprohub.yml`) hoga.
+3. Jab `gitprohub.md` add ya update karke push hoga, GitHub Actions automatically run hoga.
+4. Workflow GitProHub API ko repository ki information bhejega.
+5. API repository details receive karke file aur metadata validate karegi.
+6. Valid project ko database/registry mein save kiya jayega.
+7. Dashboard par registered projects dikhaye jayenge.
+8. Registered repositories ko future mein webhook ya scheduled checks se monitor kiya ja sakega.
+
+### **System ka flow**
+
+\#chatgpt-mermaid-\_r_8ic\_{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";font-size:16px;fill:rgb(237, 237, 237);}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#chatgpt-mermaid-\_r_8ic\_ .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#chatgpt-mermaid-\_r_8ic\_ .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#chatgpt-mermaid-\_r_8ic\_ .error-icon{fill:rgb(48, 48, 48);}#chatgpt-mermaid-\_r_8ic\_ .error-text{fill:rgb(237, 237, 237);stroke:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_8ic\_ .edge-thickness-normal{stroke-width:1px;}#chatgpt-mermaid-\_r_8ic\_ .edge-thickness-thick{stroke-width:3.5px;}#chatgpt-mermaid-\_r_8ic\_ .edge-pattern-solid{stroke-dasharray:0;}#chatgpt-mermaid-\_r_8ic\_ .edge-thickness-invisible{stroke-width:0;fill:none;}#chatgpt-mermaid-\_r_8ic\_ .edge-pattern-dashed{stroke-dasharray:3;}#chatgpt-mermaid-\_r_8ic\_ .edge-pattern-dotted{stroke-dasharray:2;}#chatgpt-mermaid-\_r_8ic\_ .marker{fill:rgb(175, 175, 175);stroke:rgb(175, 175, 175);}#chatgpt-mermaid-\_r_8ic\_ .marker.cross{stroke:rgb(175, 175, 175);}#chatgpt-mermaid-\_r_8ic\_ svg{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";font-size:16px;}#chatgpt-mermaid-\_r_8ic\_ p{margin:0;}#chatgpt-mermaid-\_r_8ic\_ .label{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";color:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_8ic\_ .cluster-label text{fill:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_8ic\_ .cluster-label span{color:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_8ic\_ .cluster-label span p{background-color:transparent;}#chatgpt-mermaid-\_r_8ic\_ .label text,#chatgpt-mermaid-\_r_8ic\_ span{fill:rgb(237, 237, 237);color:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_8ic\_ .node rect,#chatgpt-mermaid-\_r_8ic\_ .node circle,#chatgpt-mermaid-\_r_8ic\_ .node ellipse,#chatgpt-mermaid-\_r_8ic\_ .node polygon,#chatgpt-mermaid-\_r_8ic\_ .node path{fill:rgb(9, 23, 44);stroke:rgb(31, 78, 148);stroke-width:1px;}#chatgpt-mermaid-\_r_8ic\_ .rough-node .label text,#chatgpt-mermaid-\_r_8ic\_ .node .label text,#chatgpt-mermaid-\_r_8ic\_ .image-shape .label,#chatgpt-mermaid-\_r_8ic\_ .icon-shape .label{text-anchor:middle;}#chatgpt-mermaid-\_r_8ic\_ .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#chatgpt-mermaid-\_r_8ic\_ .rough-node .label,#chatgpt-mermaid-\_r_8ic\_ .node .label,#chatgpt-mermaid-\_r_8ic\_ .image-shape .label,#chatgpt-mermaid-\_r_8ic\_ .icon-shape .label{text-align:center;}#chatgpt-mermaid-\_r_8ic\_ .node.clickable{cursor:pointer;}#chatgpt-mermaid-\_r_8ic\_ .root .anchor path{fill:rgb(175, 175, 175)!important;stroke-width:0;stroke:rgb(175, 175, 175);}#chatgpt-mermaid-\_r_8ic\_ .arrowheadPath{fill:rgb(175, 175, 175);}#chatgpt-mermaid-\_r_8ic\_ .edgePath .path{stroke:rgb(175, 175, 175);stroke-width:1px;}#chatgpt-mermaid-\_r_8ic\_ .flowchart-link{stroke:rgb(175, 175, 175);fill:none;}#chatgpt-mermaid-\_r_8ic\_ .edgeLabel{background-color:rgb(0, 0, 0);text-align:center;}#chatgpt-mermaid-\_r_8ic\_ .edgeLabel p{background-color:rgb(0, 0, 0);}#chatgpt-mermaid-\_r_8ic\_ .edgeLabel rect{opacity:0.5;background-color:rgb(0, 0, 0);fill:rgb(0, 0, 0);}#chatgpt-mermaid-\_r_8ic\_ .labelBkg{background-color:rgba(0, 0, 0, 0.5);}#chatgpt-mermaid-\_r_8ic\_ .cluster rect{fill:rgb(48, 48, 48);stroke:rgba(255, 255, 255, 0.15);stroke-width:1px;}#chatgpt-mermaid-\_r_8ic\_ .cluster text{fill:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_8ic\_ .cluster span{color:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_8ic\_ div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";font-size:12px;background:rgb(48, 48, 48);border:1px solid rgba(255, 255, 255, 0.15);border-radius:2px;pointer-events:none;z-index:100;}#chatgpt-mermaid-\_r_8ic\_ .flowchartTitleText{text-anchor:middle;font-size:18px;fill:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_8ic\_ rect.text{fill:none;stroke-width:0;}#chatgpt-mermaid-\_r_8ic\_ .icon-shape,#chatgpt-mermaid-\_r_8ic\_ .image-shape{background-color:rgb(0, 0, 0);text-align:center;}#chatgpt-mermaid-\_r_8ic\_ .icon-shape p,#chatgpt-mermaid-\_r_8ic\_ .image-shape p{background-color:rgb(0, 0, 0);padding:2px;}#chatgpt-mermaid-\_r_8ic\_ .icon-shape .label rect,#chatgpt-mermaid-\_r_8ic\_ .image-shape .label rect{opacity:0.5;background-color:rgb(0, 0, 0);fill:rgb(0, 0, 0);}#chatgpt-mermaid-\_r_8ic\_ .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#chatgpt-mermaid-\_r_8ic\_ .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#chatgpt-mermaid-\_r_8ic\_ .node .neo-node{stroke:rgb(31, 78, 148);}#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].node rect,#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].cluster rect,#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].node polygon{stroke:url(#chatgpt-mermaid-\_r_8ic\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].swimlane.cluster rect{filter:none;}#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].node path{stroke:url(#chatgpt-mermaid-\_r_8ic\_-gradient);stroke-width:1px;}#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].node .neo-line path{stroke:rgb(31, 78, 148);filter:none;}#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].node circle{stroke:url(#chatgpt-mermaid-\_r_8ic\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].node circle .state-start{fill:#000000;}#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].icon-shape .icon{fill:url(#chatgpt-mermaid-\_r_8ic\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_8ic\_ [data-look="neo"].icon-shape .icon-neo path{stroke:url(#chatgpt-mermaid-\_r_8ic\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_8ic\_ .node text{font-size:14px;font-weight:600;letter-spacing:normal;fill:rgb(153, 206, 255);}#chatgpt-mermaid-\_r_8ic\_ .edgeLabels text{font-size:13px;font-weight:600;letter-spacing:-0.08px;fill:rgb(153, 206, 255);}#chatgpt-mermaid-\_r_8ic\_ .node tspan[font-weight="normal"],#chatgpt-mermaid-\_r_8ic\_ .edgeLabels tspan[font-weight="normal"]{font-weight:600;}#chatgpt-mermaid-\_r_8ic\_ .edgeLabel .label rect{opacity:1;rx:13px;ry:13px;fill:rgb(0, 14, 26);stroke:rgb(26, 62, 95);stroke-width:1px;}#chatgpt-mermaid-\_r_8ic\_ .node rect,#chatgpt-mermaid-\_r_8ic\_ .node circle,#chatgpt-mermaid-\_r_8ic\_ .node ellipse,#chatgpt-mermaid-\_r_8ic\_ .node polygon,#chatgpt-mermaid-\_r_8ic\_ .node path{fill:rgb(0, 40, 77);stroke:rgba(255, 255, 255, 0.1);stroke-width:1px;}#chatgpt-mermaid-\_r_8ic\_ .node rect{rx:16px;ry:16px;}#chatgpt-mermaid-\_r_8ic\_ .mermaid-decision .label-container{fill:rgb(0, 14, 26);stroke:rgb(26, 62, 95);stroke-dasharray:2,2;}#chatgpt-mermaid-\_r_8ic\_ .edgePaths .flowchart-link{stroke:rgb(175, 175, 175);stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;}#chatgpt-mermaid-\_r_8ic\_ .marker{fill:rgb(175, 175, 175);stroke:rgb(175, 175, 175);}#chatgpt-mermaid-\_r_8ic\_ :root{--mermaid-font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";}gitprohub.md AddGitHub PushGitHub ActionsGitProHub APIValidationProject RegistryDashboard
+
+### **Main files**
+
+| File            | Work                              |
+| --------------- | --------------------------------- |
+| `gitprohub.md`  | Project identity aur metadata     |
+| `gitprohub.yml` | Automatic trigger                 |
+| `server.js`     | API server                        |
+| `routes/`       | API endpoints                     |
+| `services/`     | Validation aur GitHub integration |
+| `projects.json` | Registered projects               |
+| `public/`       | Dashboard                         |
+| `README.md`     | Documentation                     |
+
+Important: GitProHub poora GitHub scan nahi karega. Initial discovery registration workflow ke through hogi. Jo repository GitProHub workflow use karegi aur `gitprohub.md` push karegi, wahi API ko registration signal bhejegi. Global discovery baad mein alag feature hoga.
+
+Is description ko future mein GitProHub ka development dobara continue karne ke liye use kar sakte ho.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# **GitProHub API — Development Progress**
+
+Completed & Tested
+
+### **Completed**
+
+- API server (`/`) — Online, version `1.3.0`
+- Projects API (`/api/projects`) — Working
+- Verify API (`/api/verify/:owner/:repo`) — Working
+- GitHub API (`/api/github`) — Connected (`haproven`)
+- Project by ID (`/api/projects/:id`) — Working
+- Register API security — `401 Unauthorized` test passed
+- Missing data validation — Passed
+- Invalid commit validation — Passed
+- `database/projects.json` — Fixed (`[]`)
+- `src/routes/register.js` — Improved and updated
+
+### **Current Setup**
+
+- Node.js + Express
+- `.env` — GitHub token
+- `src/routes/` — API routes
+- `src/services/` — GitHub integration & validation
+- `database/projects.json` — Project registry
+- `public/` — Dashboard
+- Git initialized and initial commit done
+
+### **Pending Development**
+
+1. `validator.js` — Improve metadata validation
+2. Real repository registration test
+3. `gitprohub.yml` — GitHub Actions workflow check
+4. Registration workflow testing
+5. Dashboard improvement
+6. API deployment (public URL)
+7. Automatic repository registration test
+8. README documentation
+
+Resume point: Step 9 — `src/services/validator.js` improvement.
+
+आगे इसी list के अनुसार step-by-step check और improve करेंगे।
+
+
+
+
+
+
+
+
+
+
+
+
+## **GitProHub — Next Plan**
+
+Manual registration successful. Ab automatic registration banana hai.
+
+1. **GitHub Actions workflow** — `gitprohub.yml` banana.
+2. **Trigger setup** — `gitprohub.md` add/update/push hone par workflow run.
+3. **API connection** — workflow API ko owner, repository aur commit bheje.
+4. **Auto-validation** — API metadata aur repository verify kare.
+5. **Auto-registration** — project JSON database mein add/update ho.
+6. **Workflow testing** — nayi repository se test karein.
+7. **Dashboard** — registered projects display kare.
+8. **API deployment** — API ko online deploy kare.
+9. **Public testing** — online automatic registration test.
+10. **README** — GitProHub protocol setup documentation.
+
+Ab Step 1 se GitHub Actions workflow banana shuru karenge, ek-ek step.
+
+Is plan ko isi chat mein follow kar sakte hain.
