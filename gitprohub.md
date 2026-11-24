@@ -6,5 +6,5 @@ id: gitprohub-api
 name: GitProHub API
 owner: haproven
 repository: https://github.com/haproven/gitprohub-api
-description: GitProHub API for repository registration and GitHub integration.
+description: description: GitProHub API for repository registration, verification and GitHub integration 2.
 status: active
