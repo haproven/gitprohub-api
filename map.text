@@ -157,3 +157,51 @@ Manual registration successful. Ab automatic registration banana hai.
 Ab Step 1 se GitHub Actions workflow banana shuru karenge, ek-ek step.
 
 Is plan ko isi chat mein follow kar sakte hain.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### **GitProHub Auto Scanner – kaise kaam karega?**
+
+Target: New repo mein sirf `gitprohub.md` add karna hai.
+
+1. **Scanner:** GitHub account `haproven` ki repositories scan karega.
+2. **File check:** Har repo mein `gitprohub.md` dhoondhega.
+3. **Validation:** Protocol, owner, repository aur required metadata check karega.
+4. **Registration:** Valid file wali repo `projects.json` mein add hogi.
+5. **Duplicate check:** Pehle se registered repo duplicate nahi hogi; update hogi.
+6. **Automatic scan:** Har 5 minute mein scan hoga.
+
+### **Abhi kya banaya hai?**
+
+- `github.js` — GitHub API se repositories aur commits fetch karne ke functions.
+- `scanner.js` — Repositories scan, file check, validation aur registration logic.
+
+### **Aage kya karna hai?**
+
+| Step | Kaam                                                |
+| ---- | --------------------------------------------------- |
+| 1    | Scanner code check                                  |
+| 2    | `server.js` mein scanner connect                    |
+| 3    | Manual scan endpoint banana                         |
+| 4    | Local test — `gitprohub.md` detect hota hai ya nahi |
+| 5    | API database check — project add hua ya nahi        |
+| 6    | Automatic 5-minute scan                             |
+| 7    | Render deploy                                       |
+| 8    | New repo mein bina workflow ke real test            |
+
+Abhi automatic scan start nahi hua hai. Scanner ka code ban raha hai, connect aur test karna baaki hai.
+
+Ab hum isi sequence mein short steps mein aage badhenge.src/server.js
