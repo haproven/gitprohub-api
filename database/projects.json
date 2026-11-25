@@ -19,7 +19,7 @@
     "repository": "haproven",
     "commit": "58b58dff5dc8bb85b94889cfaac66d9d31a24ab4",
     "url": "https://github.com/haproven/haproven",
-    "updatedAt": "2026-11-25T14:49:53.102Z"
+    "updatedAt": "2026-11-25T14:58:50.557Z"
   },
   {
     "protocol": "GitProHub",
@@ -30,9 +30,9 @@
     "repository": "gitprohub-api",
     "description": "description: GitProHub API for repository registration, verification and GitHub integration 2.",
     "status": "verified",
-    "commit": "abbde8026a79a8befe158b61725eb52926b63ae0",
+    "commit": "2bb44d1ecab8380ee15d97ee25560ff8fcbc4684",
     "url": "https://github.com/haproven/gitprohub-api",
-    "updatedAt": "2026-11-25T14:49:44.950Z"
+    "updatedAt": "2026-11-25T14:58:21.463Z"
   },
   {
     "protocol": "GitProHub",
@@ -45,6 +45,6 @@
     "status": "verified",
     "commit": "7f08cac2359573a4aa6da1da62664d10b7eec69a",
     "url": "https://github.com/haproven/gitprohub-test",
-    "updatedAt": "2026-11-25T14:49:45.638Z"
+    "updatedAt": "2026-11-25T14:58:22.453Z"
   }
 ]
