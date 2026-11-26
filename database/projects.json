@@ -19,7 +19,7 @@
     "repository": "haproven",
     "commit": "58b58dff5dc8bb85b94889cfaac66d9d31a24ab4",
     "url": "https://github.com/haproven/haproven",
-    "updatedAt": "2026-11-26T16:08:06.928Z"
+    "updatedAt": "2026-11-26T16:53:49.103Z"
   },
   {
     "protocol": "GitProHub",
@@ -30,9 +30,9 @@
     "repository": "gitprohub-api",
     "description": "description: GitProHub API for repository registration, verification and GitHub integration 2.",
     "status": "verified",
-    "commit": "ec96e8a2c067e9ccaa415e9c126901f7369055a1",
+    "commit": "6d9e1e8dc76343e0a3c04c3f85578c9c13c65f3b",
     "url": "https://github.com/haproven/gitprohub-api",
-    "updatedAt": "2026-11-26T16:07:58.086Z"
+    "updatedAt": "2026-11-26T16:53:43.575Z"
   },
   {
     "protocol": "GitProHub",
@@ -46,7 +46,7 @@
     "status": "verified",
     "commit": "c935bf5fa61908ceb06a94b264a8ac816fc1f4d2",
     "url": "https://github.com/haproven/HaproID",
-    "updatedAt": "2026-11-26T16:08:02.944Z"
+    "updatedAt": "2026-11-26T16:53:45.912Z"
   },
   {
     "title": "Vishnupur-SMR",
@@ -68,7 +68,7 @@
     "repository": "vishnupur-smr",
     "commit": "b754f3333d63b44ed74d51b090cea673a244130b",
     "url": "https://github.com/haproven/vishnupur-smr",
-    "updatedAt": "2026-11-26T16:08:14.986Z"
+    "updatedAt": "2026-11-26T16:53:53.974Z"
   },
   {
     "protocol": "GitProHub",
@@ -81,7 +81,7 @@
     "commit": "cea545a76937fb7137894af1abe3b1ee0b034480",
     "url": "https://github.com/codersusheel/gitprohub-submit-test",
     "status": "verified",
-    "updatedAt": "2026-11-26T16:08:16.561Z"
+    "updatedAt": "2026-11-26T16:53:55.215Z"
   },
   {
     "protocol": "GitProHub",
@@ -94,6 +94,19 @@
     "commit": "430a26a34716784975aad1754a014f6a2207de84",
     "url": "https://github.com/codersusheel/Codersusheel",
     "status": "verified",
-    "updatedAt": "2026-11-26T16:08:18.340Z"
+    "updatedAt": "2026-11-26T16:53:56.710Z"
+  },
+  {
+    "protocol": "GitProHub",
+    "version": "1.3.0",
+    "id": "gitprohub-test",
+    "name": "GitProHub Test",
+    "owner": "haproven",
+    "repository": "gitprohub-test",
+    "description": "Test repository for GitProHub API registration and verification. hii i,m susheel gitprohub testing...",
+    "status": "verified",
+    "commit": "6c72fc09a0e5ce4f8fd58f6951078c17bd7469a7",
+    "url": "https://github.com/haproven/gitprohub-test",
+    "updatedAt": "2026-11-26T16:53:44.201Z"
   }
 ]
