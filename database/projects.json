@@ -19,7 +19,7 @@
     "repository": "haproven",
     "commit": "58b58dff5dc8bb85b94889cfaac66d9d31a24ab4",
     "url": "https://github.com/haproven/haproven",
-    "updatedAt": "2026-11-26T14:26:04.206Z"
+    "updatedAt": "2026-11-26T14:44:22.566Z"
   },
   {
     "protocol": "GitProHub",
@@ -30,9 +30,9 @@
     "repository": "gitprohub-api",
     "description": "description: GitProHub API for repository registration, verification and GitHub integration 2.",
     "status": "verified",
-    "commit": "83ec480a481c713c55619183e722a13b4dd73948",
+    "commit": "5976410171ef35907504d96fae04ac0125454fc6",
     "url": "https://github.com/haproven/gitprohub-api",
-    "updatedAt": "2026-11-26T14:25:55.492Z"
+    "updatedAt": "2026-11-26T14:44:12.780Z"
   },
   {
     "protocol": "GitProHub",
@@ -45,7 +45,7 @@
     "status": "verified",
     "commit": "a96ff24775921ea26e5e0962e35f2318e3f39d60",
     "url": "https://github.com/haproven/gitprohub-test",
-    "updatedAt": "2026-11-26T14:25:56.375Z"
+    "updatedAt": "2026-11-26T14:44:13.909Z"
   },
   {
     "protocol": "GitProHub",
@@ -59,6 +59,28 @@
     "status": "verified",
     "commit": "c935bf5fa61908ceb06a94b264a8ac816fc1f4d2",
     "url": "https://github.com/haproven/HaproID",
-    "updatedAt": "2026-11-26T14:26:00.547Z"
+    "updatedAt": "2026-11-26T14:44:19.344Z"
+  },
+  {
+    "title": "Vishnupur-SMR",
+    "description": "A project registered with GitProHub API.",
+    "category": "Local Information Platform",
+    "status": "verified",
+    "image": "https://raw.githubusercontent.com/haproven/vishnupur-smr/refs/heads/main/assets/img/vishnupursmr-logo.webp",
+    "live": "https://vishnupursmr.netlify.app/",
+    "demo": "",
+    "documentation": "https://github.com/haproven/vishnupur-smr",
+    "tags": "local-information, community-portal, regional-information, hindi-content, maithili-content, local-places, community-updates, useful-resources, bihar, sitamarhi, web-platform, open-source",
+    "featured": "false",
+    "open_source": "true",
+    "protocol": "GitProHub",
+    "version": "1.0",
+    "owner": "haproven",
+    "id": "Vishnupur-SMR",
+    "name": "Vishnupur-SMR",
+    "repository": "vishnupur-smr",
+    "commit": "b754f3333d63b44ed74d51b090cea673a244130b",
+    "url": "https://github.com/haproven/vishnupur-smr",
+    "updatedAt": "2026-11-26T14:44:33.554Z"
   }
 ]
