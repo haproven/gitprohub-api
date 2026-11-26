@@ -31,15 +31,26 @@ function saveDB(data) {
     fs.writeFileSync(DB, JSON.stringify(data, null, 2));
 }
 
+function removeProject(owner, repoName, projects) {
+    const index = projects.findIndex(
+        p =>
+            p.owner?.toLowerCase() === owner.toLowerCase() &&
+            p.repository?.toLowerCase() === repoName.toLowerCase()
+    );
+
+    if (index === -1) {
+        return false;
+    }
+
+    projects.splice(index, 1);
+    return true;
+}
+
 // Scan and update one repository
 async function scanSingleRepository(owner, repoName, branch, repoURL, projects) {
     const commit = await getLatestCommit(owner, repoName, branch);
 
-    const content = await getGitProHubFile(
-        owner,
-        repoName,
-        commit
-    );
+    const content = await getGitProHubFile(owner, repoName, commit);
 
     const metadata = parseFile(content);
 
@@ -78,6 +89,7 @@ async function scanRepositories(owner) {
     let added = 0;
     let updated = 0;
     let skipped = 0;
+    let removed = 0;
     let scanned = 0;
 
     const scannedRepositories = new Set();
@@ -109,10 +121,15 @@ async function scanRepositories(owner) {
             if (result === "updated") updated++;
 
         } catch (error) {
-            skipped++;
-            console.log(
-                `Skipped ${owner}/${repo.name}: ${error.message}`
-            );
+            if (error.message === "gitprohub.md not found") {
+                if (removeProject(owner, repo.name, projects)) {
+                    removed++;
+                    console.log(`Removed ${owner}/${repo.name}: gitprohub.md missing`);
+                }
+            } else {
+                skipped++;
+                console.log(`Skipped ${owner}/${repo.name}: ${error.message}`);
+            }
         }
     }
 
@@ -129,18 +146,16 @@ async function scanRepositories(owner) {
             const externalOwner = project.owner;
             const repoName = project.repository;
 
-            // Avoid rescanning repositories already scanned above
             const key = `${externalOwner}/${repoName}`.toLowerCase();
 
+            // Avoid rescanning repositories already scanned above
             if (scannedRepositories.has(key)) {
                 continue;
             }
 
-            // Only track repositories registered in database
             scannedRepositories.add(key);
             scanned++;
 
-            // Get repository details
             const repoInfo = await getRepositoryInfo(
                 externalOwner,
                 repoName
@@ -163,11 +178,19 @@ async function scanRepositories(owner) {
             if (result === "updated") updated++;
 
         } catch (error) {
-            skipped++;
-
-            console.log(
-                `Skipped registered repository ${project.owner}/${project.repository}: ${error.message}`
-            );
+            if (error.message === "gitprohub.md not found") {
+                if (removeProject(project.owner, project.repository, projects)) {
+                    removed++;
+                    console.log(
+                        `Removed ${project.owner}/${project.repository}: gitprohub.md missing`
+                    );
+                }
+            } else {
+                skipped++;
+                console.log(
+                    `Skipped registered repository ${project.owner}/${project.repository}: ${error.message}`
+                );
+            }
         }
     }
 
@@ -178,6 +201,7 @@ async function scanRepositories(owner) {
         scanned,
         added,
         updated,
+        removed,
         skipped
     };
 }
