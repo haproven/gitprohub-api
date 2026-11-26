@@ -19,7 +19,7 @@
     "repository": "haproven",
     "commit": "58b58dff5dc8bb85b94889cfaac66d9d31a24ab4",
     "url": "https://github.com/haproven/haproven",
-    "updatedAt": "2026-11-26T14:49:16.691Z"
+    "updatedAt": "2026-11-26T15:05:11.646Z"
   },
   {
     "protocol": "GitProHub",
@@ -30,9 +30,9 @@
     "repository": "gitprohub-api",
     "description": "description: GitProHub API for repository registration, verification and GitHub integration 2.",
     "status": "verified",
-    "commit": "414f102b67fcf7cbc65b47e7095e52ea33addc19",
+    "commit": "37f74720d5cb46dc53cad08ea4b9202e2bcc009f",
     "url": "https://github.com/haproven/gitprohub-api",
-    "updatedAt": "2026-11-26T14:49:09.582Z"
+    "updatedAt": "2026-11-26T15:05:04.187Z"
   },
   {
     "protocol": "GitProHub",
@@ -45,7 +45,7 @@
     "status": "verified",
     "commit": "a96ff24775921ea26e5e0962e35f2318e3f39d60",
     "url": "https://github.com/haproven/gitprohub-test",
-    "updatedAt": "2026-11-26T14:49:10.131Z"
+    "updatedAt": "2026-11-26T15:05:04.776Z"
   },
   {
     "protocol": "GitProHub",
@@ -59,7 +59,7 @@
     "status": "verified",
     "commit": "c935bf5fa61908ceb06a94b264a8ac816fc1f4d2",
     "url": "https://github.com/haproven/HaproID",
-    "updatedAt": "2026-11-26T14:49:13.099Z"
+    "updatedAt": "2026-11-26T15:05:08.087Z"
   },
   {
     "title": "Vishnupur-SMR",
@@ -81,6 +81,19 @@
     "repository": "vishnupur-smr",
     "commit": "b754f3333d63b44ed74d51b090cea673a244130b",
     "url": "https://github.com/haproven/vishnupur-smr",
-    "updatedAt": "2026-11-26T14:49:24.300Z"
+    "updatedAt": "2026-11-26T15:05:19.855Z"
+  },
+  {
+    "protocol": "GitProHub",
+    "version": "1.3.0",
+    "id": "gitprohub-submit-test",
+    "name": "GitProHub Submit Test",
+    "owner": "codersusheel",
+    "repository": "gitprohub-submit-test",
+    "description": "Testing universal GitProHub repository submission.",
+    "commit": "d400f16d81666b0b2f34653365e928a80411c394",
+    "url": "https://github.com/codersusheel/gitprohub-submit-test",
+    "status": "verified",
+    "updatedAt": "2026-11-26T15:03:49.739Z"
   }
 ]
