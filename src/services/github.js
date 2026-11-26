@@ -1,30 +1,4 @@
 
-// async function getGitProHubFile(owner, repo, commit) {
-//     const url = `https://raw.githubusercontent.com/${owner}/${repo}/${commit}/gitprohub.md`;
-
-//     const response = await fetch(url);
-
-//     if (!response.ok) {
-//         throw new Error("gitprohub.md not found");
-//     }
-
-//     return await response.text();
-// }
-
-// module.exports = { getGitProHubFile };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const GITHUB_TOKEN = process.env.GITPROHUB_TOKEN;
 
@@ -63,16 +37,23 @@ async function getRepositories(owner) {
     return repositories;
 }
 
+// Get repository details
+async function getRepositoryInfo(owner, repo) {
+    return githubRequest(
+        `https://api.github.com/repos/${owner}/${repo}`
+    );
+}
+
 // Get latest commit
 async function getLatestCommit(owner, repo, branch) {
     const data = await githubRequest(
-        `https://api.github.com/repos/${owner}/${repo}/commits/${branch}`
+        `https://api.github.com/repos/${owner}/${repo}/commits/${encodeURIComponent(branch)}`
     );
 
     return data.sha;
 }
 
-// Existing GitProHub file fetch
+// Fetch gitprohub.md
 async function getGitProHubFile(owner, repo, commit) {
     const url = `https://raw.githubusercontent.com/${owner}/${repo}/${commit}/gitprohub.md`;
 
@@ -88,5 +69,6 @@ async function getGitProHubFile(owner, repo, commit) {
 module.exports = {
     getGitProHubFile,
     getRepositories,
+    getRepositoryInfo,
     getLatestCommit
 };
