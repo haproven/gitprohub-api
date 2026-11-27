@@ -58,16 +58,17 @@ app.get("/", (req, res) => {
             projectById: `${BASE_URL}/api/projects/haproven`,
             verify: `${BASE_URL}/api/verify/haproven/haproven`,
             scan: `${BASE_URL}/api/scan`
-        }, links: {
-            status: `https://gitprohub-api.onrender.com/`,
-            github: `https://gitprohub-api.onrender.com/api/github`,
-            register: `https://gitprohub-api.onrender.com/api/register`,
-            submit: `https://gitprohub-api.onrender.com/api/submit`,
-            projects: `https://gitprohub-api.onrender.com/api/projects`,
-            projectById: `https://gitprohub-api.onrender.com/api/projects/haproven`,
-            verify: `https://gitprohub-api.onrender.com/api/verify/haproven/haproven`,
-            scan: `https://gitprohub-api.onrender.com/api/scan`
         }
+        // , links: {
+        //     status: `https://gitprohub-api.onrender.com/`,
+        //     github: `https://gitprohub-api.onrender.com/api/github`,
+        //     register: `https://gitprohub-api.onrender.com/api/register`,
+        //     submit: `https://gitprohub-api.onrender.com/api/submit`,
+        //     projects: `https://gitprohub-api.onrender.com/api/projects`,
+        //     projectById: `https://gitprohub-api.onrender.com/api/projects/haproven`,
+        //     verify: `https://gitprohub-api.onrender.com/api/verify/haproven/haproven`,
+        //     scan: `https://gitprohub-api.onrender.com/api/scan`
+        // }
     });
 });
 
@@ -171,5 +172,5 @@ app.listen(PORT, () => {
     runScan();
 
     // Automatic Scan Every 5 Minutes
-    setInterval(runScan, 5 * 60 * 1000);
+    setInterval(runScan, 1 * 60 * 1000);
 });

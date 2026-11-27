@@ -1,27 +1,5 @@
 [
   {
-    "title": "Haproven",
-    "description": "Hackathons, Projects, Events & Technology.",
-    "category": "Technology Community",
-    "status": "verified",
-    "image": "https://haproven.netlify.app/assets/img/haproven-logo.png",
-    "live": "https://haproven.netlify.app/",
-    "demo": "",
-    "documentation": "",
-    "tags": "technology-community, developer-community, open-source-projects, hackathons, technology-events, digital-tools, real-world-projects, learning-platform, collaboration, innovation, haproven, open-source",
-    "featured": "true",
-    "open_source": "true",
-    "protocol": "GitProHub",
-    "version": "1.0",
-    "id": "haproven",
-    "name": "Haproven",
-    "owner": "haproven",
-    "repository": "haproven",
-    "commit": "58b58dff5dc8bb85b94889cfaac66d9d31a24ab4",
-    "url": "https://github.com/haproven/haproven",
-    "updatedAt": "2026-11-27T04:38:47.747Z"
-  },
-  {
     "protocol": "GitProHub",
     "version": "1.0",
     "id": "gitprohub-api",
@@ -30,9 +8,9 @@
     "repository": "gitprohub-api",
     "description": "description: GitProHub API for repository registration, verification and GitHub integration 2.",
     "status": "verified",
-    "commit": "5573cea6110632e9915ca76088b3a2371a4f1de0",
+    "commit": "88d1d95afd55f763a7e7699739e47f8880627fcc",
     "url": "https://github.com/haproven/gitprohub-api",
-    "updatedAt": "2026-11-27T04:38:39.666Z"
+    "updatedAt": "2026-11-27T05:35:42.649Z"
   },
   {
     "protocol": "GitProHub",
@@ -46,7 +24,7 @@
     "status": "verified",
     "commit": "c935bf5fa61908ceb06a94b264a8ac816fc1f4d2",
     "url": "https://github.com/haproven/HaproID",
-    "updatedAt": "2026-11-27T04:38:43.856Z"
+    "updatedAt": "2026-11-27T05:35:45.406Z"
   },
   {
     "title": "Vishnupur-SMR",
@@ -68,7 +46,7 @@
     "repository": "vishnupur-smr",
     "commit": "b754f3333d63b44ed74d51b090cea673a244130b",
     "url": "https://github.com/haproven/vishnupur-smr",
-    "updatedAt": "2026-11-27T04:38:51.665Z"
+    "updatedAt": "2026-11-27T05:35:51.325Z"
   },
   {
     "protocol": "GitProHub",
@@ -81,7 +59,7 @@
     "commit": "cea545a76937fb7137894af1abe3b1ee0b034480",
     "url": "https://github.com/codersusheel/gitprohub-submit-test",
     "status": "verified",
-    "updatedAt": "2026-11-27T04:38:53.077Z"
+    "updatedAt": "2026-11-27T05:35:52.376Z"
   },
   {
     "protocol": "GitProHub",
@@ -94,7 +72,7 @@
     "commit": "430a26a34716784975aad1754a014f6a2207de84",
     "url": "https://github.com/codersusheel/Codersusheel",
     "status": "verified",
-    "updatedAt": "2026-11-27T04:38:54.716Z"
+    "updatedAt": "2026-11-27T05:35:53.467Z"
   },
   {
     "protocol": "GitProHub",
@@ -107,7 +85,7 @@
     "status": "verified",
     "commit": "6c72fc09a0e5ce4f8fd58f6951078c17bd7469a7",
     "url": "https://github.com/haproven/gitprohub-test",
-    "updatedAt": "2026-11-27T04:38:40.585Z"
+    "updatedAt": "2026-11-27T05:35:43.215Z"
   },
   {
     "protocol": "GitProHub",
@@ -120,6 +98,21 @@
     "status": "verified",
     "commit": "474c7251830659d2777045c6a3fc106dcc67d2eb",
     "url": "https://github.com/haproven/TeamTrack",
-    "updatedAt": "2026-11-27T04:38:50.847Z"
+    "updatedAt": "2026-11-27T05:35:50.763Z"
+  },
+  {
+    "image": "https://haproven.netlify.app/assets/img/haproven-logo.png",
+    "live": "https://haproven.netlify.app/",
+    "protocol": "GitProHub",
+    "version": "1.0",
+    "id": "haproven",
+    "name": "Haproven",
+    "owner": "haproven",
+    "repository": "haproven",
+    "description": "Hackathons, Projects, Events & Technology.",
+    "status": "verified",
+    "commit": "a4ad0903fd3be0470faec6acb653d4bde9b1e7f9",
+    "url": "https://github.com/haproven/haproven",
+    "updatedAt": "2026-11-27T05:35:47.684Z"
   }
 ]
