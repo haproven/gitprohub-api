@@ -1,4 +1,4 @@
-
+﻿
 const GITHUB_TOKEN = process.env.GITPROHUB_TOKEN;
 
 const MAX_RETRIES = 3;
@@ -180,6 +180,65 @@ async function getGitProHubFile(owner, repo, commit) {
     throw new Error("GitProHub file fetch failed");
 }
 
+// Discover repositories containing gitprohub.md
+async function discoverGitProHubRepositories(maxResults = 20) {
+    const limit = Math.max(1, Math.min(Number(maxResults) || 20, 100));
+    const repositories = [];
+    const seen = new Set();
+
+    let page = 1;
+
+    while (repositories.length < limit) {
+        const perPage = Math.min(30, limit - repositories.length);
+
+        const query = encodeURIComponent("filename:gitprohub.md");
+
+        const data = await githubRequest(
+            `https://api.github.com/search/code?q=${query}&per_page=${perPage}&page=${page}`
+        );
+
+        if (!Array.isArray(data.items) || !data.items.length) {
+            break;
+        }
+
+        for (const item of data.items) {
+            const owner = item.repository?.owner?.login;
+            const repo = item.repository?.name;
+            const filePath = item.path;
+
+            if (!owner || !repo || filePath !== "gitprohub.md") {
+                continue;
+            }
+
+            const key = `${owner}/${repo}`.toLowerCase();
+
+            if (seen.has(key)) {
+                continue;
+            }
+
+            seen.add(key);
+
+            repositories.push({
+                owner,
+                repository: repo,
+                path: filePath,
+                url: item.html_url
+            });
+
+            if (repositories.length >= limit) {
+                break;
+            }
+        }
+
+        if (data.items.length < perPage) {
+            break;
+        }
+
+        page++;
+    }
+
+    return repositories;
+}
 // Get repositories
 async function getRepositories(owner) {
     let repositories = [];
@@ -227,8 +286,10 @@ async function getLatestCommit(owner, repo, branch) {
 }
 
 module.exports = {
+    discoverGitProHubRepositories,
     getGitProHubFile,
     getRepositories,
     getRepositoryInfo,
     getLatestCommit
 };
+

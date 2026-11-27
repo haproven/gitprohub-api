@@ -1,3 +1,49 @@
+const FIELD_ALIASES = {
+    protocol: ["protocol", "gitprohub protocol", "format"],
+    id: ["id", "project id", "project identifier"],
+    name: ["name", "project name", "title"],
+    owner: ["owner", "github owner", "github username", "username", "author"],
+    repository: [
+        "repository",
+        "repo",
+        "repository url",
+        "repo url",
+        "github repository",
+        "github repo",
+        "github url"
+    ]
+};
+
+const ALIAS_MAP = {};
+
+for (const [canonical, aliases] of Object.entries(FIELD_ALIASES)) {
+    for (const alias of aliases) {
+        ALIAS_MAP[normalizeKey(alias)] = canonical;
+    }
+}
+
+function normalizeKey(key) {
+    return String(key)
+        .replace(/[*`_]/g, "")
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim();
+}
+
+function cleanValue(value) {
+    let result = String(value ?? "").trim();
+
+    // Remove only surrounding quotes
+    result = result.replace(/^["'](.*)["']$/, "$1").trim();
+
+    // Remove surrounding Markdown inline formatting without altering inner characters
+    result = result.replace(/^(\*\*|__)(.*)\1$/, "$2").trim();
+    result = result.replace(/^(\*|_)(.*)\1$/, "$2").trim();
+    result = result.replace(/^`(.*)`$/, "$1").trim();
+
+    return result;
+}
 
 function parseFile(content) {
     if (typeof content !== "string" || !content.trim()) {
@@ -6,16 +52,46 @@ function parseFile(content) {
 
     const data = {};
 
-    content.split(/\r?\n/).forEach(line => {
-        const match = line.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+    function assign(key, value) {
+        const normalized = ALIAS_MAP[normalizeKey(key)];
+        const cleaned = cleanValue(value);
+
+        if (normalized && cleaned && !data[normalized]) {
+            data[normalized] = cleaned;
+        }
+    }
+
+    for (const rawLine of content.split(/\r?\n/)) {
+        const line = rawLine.trim();
+
+        if (!line || /^---+$/.test(line) || /^#+\s/.test(line)) {
+            continue;
+        }
+
+        // Markdown table: | Protocol | GitProHub |
+        if (line.includes("|")) {
+            const cells = line
+                .split("|")
+                .map(cell => cell.trim())
+                .filter(Boolean);
+
+            if (
+                cells.length >= 2 &&
+                !cells.every(cell => /^:?-{2,}:?$/.test(cell))
+            ) {
+                assign(cells[0], cells.slice(1).join(" "));
+            }
+        }
+
+        // Markdown, bullet or YAML-style key: value
+        const match = line.match(
+            /^(?:[-+]\s*)?(?:\*\*)?([^:]+?)(?:\*\*)?\s*:\s*(.*)$/
+        );
 
         if (match) {
-            const key = match[1].trim();
-            const value = match[2].trim();
-
-            data[key] = value;
+            assign(match[1], match[2]);
         }
-    });
+    }
 
     return data;
 }
@@ -23,7 +99,7 @@ function parseFile(content) {
 // Validate Metadata
 function validateProject(data, owner, repo) {
     // Protocol
-    if (data.protocol !== "GitProHub") {
+    if (!/^gitprohub(?:\s+v?\d+(?:\.\d+)*)?$/i.test(data.protocol || "")) {
         throw new Error("Invalid protocol");
     }
 
@@ -48,15 +124,23 @@ function validateProject(data, owner, repo) {
 
     // Repository URL validation
     try {
-        const repoURL = new URL(data.repository);
+        let repository = data.repository.trim();
+
+        if (!/^https?:\/\//i.test(repository)) {
+            repository = `https://${repository}`;
+        }
+
+        const repoURL = new URL(repository);
 
         if (
-            repoURL.hostname !== "github.com" ||
+            repoURL.hostname.toLowerCase() !== "github.com" ||
             repoURL.pathname.replace(/\/+$/, "").toLowerCase() !==
                 `/${owner}/${repo}`.toLowerCase()
         ) {
             throw new Error("Repository mismatch");
         }
+
+        data.repository = `https://github.com/${owner}/${repo}`;
     } catch {
         throw new Error("Invalid repository URL");
     }

@@ -1,16 +1,23 @@
-
+﻿
 require("dotenv").config();
 
 const express = require("express");
+const fs = require("fs");
+const path = require("path");
+
 const app = express();
 
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 const GITHUB_TOKEN = process.env.GITPROHUB_TOKEN;
-const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
-const { scanRepositories } = require("./services/scanner");
+// Automatically detect deployment environment
+const BASE_URL = process.env.RENDER
+    ? (process.env.RENDER_EXTERNAL_URL || `https://${process.env.RENDER_SERVICE_NAME}.onrender.com`)
+    : `http://localhost:${PORT}`;
+
+const { scanRepositories, runDiscoveryOnly } = require("./services/scanner");
 
 let isScanning = false;
 
@@ -42,34 +49,80 @@ app.get("/", (req, res) => {
         endpoints: {
             status: "/",
             github: "/api/github",
+            accounts: "/api/accounts",
             register: "/api/register",
             submit: "/api/submit",
             projects: "/api/projects",
             projectById: "/api/projects/:id",
             verify: "/api/verify/:owner/:repo",
-            scan: "/api/scan"
+            scan: "/api/scan",
+            discover: "/api/discover"
         },
         links: {
             status: `${BASE_URL}/`,
             github: `${BASE_URL}/api/github`,
+            accounts: `${BASE_URL}/api/accounts`,
             register: `${BASE_URL}/api/register`,
             submit: `${BASE_URL}/api/submit`,
             projects: `${BASE_URL}/api/projects`,
             projectById: `${BASE_URL}/api/projects/haproven`,
             verify: `${BASE_URL}/api/verify/haproven/haproven`,
-            scan: `${BASE_URL}/api/scan`
-        }
-        , links: {
-            status: `https://gitprohub-api.onrender.com/`,
-            github: `https://gitprohub-api.onrender.com/api/github`,
-            register: `https://gitprohub-api.onrender.com/api/register`,
-            submit: `https://gitprohub-api.onrender.com/api/submit`,
-            projects: `https://gitprohub-api.onrender.com/api/projects`,
-            projectById: `https://gitprohub-api.onrender.com/api/projects/haproven`,
-            verify: `https://gitprohub-api.onrender.com/api/verify/haproven/haproven`,
-            scan: `https://gitprohub-api.onrender.com/api/scan`
+            scan: `${BASE_URL}/api/scan`,
+            discover: `${BASE_URL}/api/discover`
         }
     });
+});
+
+// Accounts Registry
+app.get("/api/accounts", (req, res) => {
+    try {
+        const accountsPath = path.join(
+            __dirname,
+            "..",
+            "database",
+            "accounts.json"
+        );
+
+        if (!fs.existsSync(accountsPath)) {
+            return res.status(404).json({
+                success: false,
+                error: "Accounts database not found"
+            });
+        }
+
+        const data = JSON.parse(
+            fs.readFileSync(accountsPath, "utf8")
+        );
+
+        if (!Array.isArray(data)) {
+            return res.status(500).json({
+                success: false,
+                error: "Invalid accounts database format"
+            });
+        }
+
+        const enabled = data.filter(
+            account => account && account.enabled === true
+        );
+
+        const disabled = data.filter(
+            account => account && account.enabled === false
+        );
+
+        res.json({
+            success: true,
+            total: data.length,
+            enabled: enabled.length,
+            disabled: disabled.length,
+            accounts: data
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
 });
 
 // GitHub Connection
@@ -158,6 +211,39 @@ app.post("/api/scan", async (req, res) => {
     }
 });
 
+// Manual Discovery (Protected)
+app.post("/api/discover", async (req, res) => {
+    if (!GITHUB_TOKEN) {
+        return res.status(500).json({
+            success: false,
+            error: "GitHub token is not configured"
+        });
+    }
+
+    if (req.headers.authorization !== `Bearer ${GITHUB_TOKEN}`) {
+        return res.status(401).json({
+            success: false,
+            error: "Unauthorized"
+        });
+    }
+
+    try {
+        const result = await runDiscoveryOnly();
+
+        if (!result.success) {
+            return res.status(409).json(result);
+        }
+
+        res.json(result);
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
 // Routes
 app.use("/api/register", require("./routes/register"));
 app.use("/api/submit", require("./routes/submit"));
@@ -168,9 +254,10 @@ app.use("/api/verify", require("./routes/verify"));
 app.listen(PORT, () => {
     console.log(`GitProHub API running at ${BASE_URL}`);
 
-    // Initial Scan
-    runScan();
-
-    // Automatic Scan Every 5 Minutes
-    setInterval(runScan, 1 * 60 * 1000);
+    if (process.env.SKIP_STARTUP_SCAN !== "true") {
+        runScan();
+        setInterval(runScan, 5 * 60 * 1000);
+    } else {
+        console.log("Startup scan and scheduler disabled.");
+    }
 });
